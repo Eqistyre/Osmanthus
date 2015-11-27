@@ -13,7 +13,7 @@ Scene* OsmanthusMenu::createScene()
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = OsmanthusMenu::create();
     
     // add layer as a child to scene
     scene->addChild(layer);

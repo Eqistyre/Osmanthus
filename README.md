@@ -30,4 +30,8 @@ GameScene  &nbsp;&nbsp;&nbsp;&nbsp;游戏场景</br>
 MainScene  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主菜单场景</br>
 StartScene  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最开始显示文字的场景</br>
 SceneManager  场景管理，切换场景的特效什么的</br>
-Global  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全局变量</br>
+Global  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全局变量</br>
+### <五>细节实现
+###### 好感度（Impression_Name）：好感度我们暂定使用5分制，5分进入个人线哈。
+###### 节操值（Moral_Value）：游戏中会有各种掉节操与增加节操的选项，节操以0为基准。一旦节操过低的时候就会被警察叔叔抓走哦
+###### 能力值（Ability_Value）：学霸即使谈不了恋爱也还是可以有自己的GoodEnd！

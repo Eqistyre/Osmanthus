@@ -1,10 +1,11 @@
 //This is the game beginner,not the menu
-#ifndef _OSMANTHUS_BEGINNER_H_
-#define _OSMANTHUS_BEGINNER_H_
+
+#ifndef _OSMANTHUS_MENU_H_
+#define _OSMANTHUS_MENU_H_
 
 #include "cocos2d.h"
 
-class OsmanthusBeginner : public cocos2d::Layer
+class OsmanthusMenu : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -14,8 +15,7 @@ public:
     virtual bool init();
     
     // implement the "static create()" method manually
-    CREATE_FUNC(OsmanthusBeginner);
+    CREATE_FUNC(OsmanthusMenu);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
-
+#endif

@@ -1,5 +1,5 @@
-//This is the game beginner,not the menu
-#include "OsmanthusBeginner.h"
+//This is the game menu
+#include "OsmanthusMenu.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -7,7 +7,7 @@ USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
-Scene* OsmanthusBeginner::createScene()
+Scene* OsmanthusMenu::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
@@ -23,7 +23,7 @@ Scene* OsmanthusBeginner::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool OsmanthusBeginner::init()
+bool OsmanthusMenu::init()
 {
     //////////////////////////////
     // 1. super init first

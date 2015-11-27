@@ -1,7 +1,8 @@
 #include "AppDelegate.h"
 #include "Global.h"
-#include "SoudManager.h"
-#include "HelloWorldScene.h"
+#include "SoundManager.h"
+#include "OsmanthusBeginner.h"
+#include "OsmanthusMenu.h"
 
 USING_NS_CC;
 
@@ -44,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
     
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = OsmanthusBeginner::createScene();
     
     // run
     director->runWithScene(scene);

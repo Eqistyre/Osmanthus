@@ -36,18 +36,25 @@ bool OsmanthusBeginner::init()
     auto RootScene = Scene::create();
     RootScene->addChild(RootNode);
     this->addChild(RootScene);
-    //create a BeginnerNode and BeginnerScene,in order in the future we can run this scene
+    //create a BeginnerNode and BeginnerLayer,in order in the future we can delete or run this Layer
     auto BeginnerNode = CSLoader::createNode("BeginnerLayer.csb");
-    auto BeginnerScene = Scene::create();
-    BeginnerScene->addChild(BeginnerNode);
-    this->addChild(BeginnerScene);
+    auto BeginnerLayer = Layer::create();
+    BeginnerLayer->addChild(BeginnerNode);
+    this->addChild(BeginnerLayer);
+    //create a MenuNode and MenuScene, in order in the future we can run this scene,now the scene is doesn't run
+    auto MenuNode = CSLoader::createNode("MenuLayer.csb");
+    auto MenuLayer = Layer::create();
+    MenuLayer->addChild(MenuNode);
+    this->addChild(MenuLayer);
+    MenuLayer->setVisible(false);
     
     cocos2d::ui::Button* BeginnerStartBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerStartBtn");
     cocos2d::ui::Button* BeginnerContinueBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerContinueBtn");
     cocos2d::ui::Button* BeginnerMenuBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerMenuBtn");
     cocos2d::ui::Button* BeginnerExitBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerExitBtn");
+    cocos2d::ui::Button* MenuBgmBtn = (cocos2d::ui::Button*)MenuNode->getChildByName("MenuBgmBtn");
     
-    BeginnerStartBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+    BeginnerStartBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
                 CCLOG("BEGAN");
@@ -79,8 +86,6 @@ bool OsmanthusBeginner::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
-                //Director::getInstance()->replaceScene(BeginnerScene);
-                removeChild(BeginnerScene);
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:
@@ -91,8 +96,8 @@ bool OsmanthusBeginner::init()
         }
         
     });
-
-    BeginnerMenuBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+    
+    BeginnerMenuBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
                 break;
@@ -101,6 +106,8 @@ bool OsmanthusBeginner::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
+                BeginnerLayer->setVisible(false);
+                MenuLayer->setVisible(true);
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:
@@ -110,8 +117,8 @@ bool OsmanthusBeginner::init()
                 break;
         }
     });
-
-    BeginnerExitBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+    
+    BeginnerExitBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch (type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
                 break;
@@ -131,5 +138,27 @@ bool OsmanthusBeginner::init()
         }
         
     });
+    
+    MenuBgmBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch (type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                CCLOG("clickBgm");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+        
+    });
+
     return true;
 }

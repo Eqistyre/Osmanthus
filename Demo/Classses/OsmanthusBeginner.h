@@ -1,10 +1,10 @@
-//This is the game beginner,not the menu
 #ifndef _OSMANTHUS_BEGINNER_H_
 #define _OSMANTHUS_BEGINNER_H_
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
+#include "OsmanthusMenu.h"
 
 class OsmanthusBeginner : public cocos2d::Layer
 {

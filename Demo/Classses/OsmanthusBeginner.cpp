@@ -1,7 +1,7 @@
-//This is the game beginner,not the menu
 #include "OsmanthusBeginner.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "OsmanthusMenu.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -31,14 +31,21 @@ bool OsmanthusBeginner::init()
         return false;
     }
     
-    //create a rootNode and add the rootNode as the first root
-    auto rootNode = CSLoader::createNode("OsmanthusBeginner.csb");
-    addChild(rootNode);
+    //create a RootNode and rootScene,add the rootScene as the first root
+    auto RootNode = CSLoader::createNode("OsmanthusBeginner.csb");
+    auto RootScene = Scene::create();
+    RootScene->addChild(RootNode);
+    this->addChild(RootScene);
+    //create a BeginnerNode and BeginnerScene,in order in the future we can run this scene
+    auto BeginnerNode = CSLoader::createNode("BeginnerLayer.csb");
+    auto BeginnerScene = Scene::create();
+    BeginnerScene->addChild(BeginnerNode);
+    this->addChild(BeginnerScene);
     
-    cocos2d::ui::Button* BeginnerStartBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerStartBtn");
-    cocos2d::ui::Button* BeginnerContinueBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerContinueBtn");
-    cocos2d::ui::Button* BeginnerMenuBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerMenuBtn");
-    cocos2d::ui::Button* BeginnerExitBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerExitBtn");
+    cocos2d::ui::Button* BeginnerStartBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerStartBtn");
+    cocos2d::ui::Button* BeginnerContinueBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerContinueBtn");
+    cocos2d::ui::Button* BeginnerMenuBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerMenuBtn");
+    cocos2d::ui::Button* BeginnerExitBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerExitBtn");
     
     BeginnerStartBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
@@ -72,6 +79,7 @@ bool OsmanthusBeginner::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
+                
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:
@@ -82,23 +90,19 @@ bool OsmanthusBeginner::init()
         }
         
     });
-    
+
     BeginnerMenuBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
-                CCLOG("BEGAN");
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::MOVED:
-                CCLOG("MOVED");
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
-                CCLOG("ENDED");
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:
-                CCLOG("CANCELED");
                 break;
                 
             default:
@@ -128,4 +132,3 @@ bool OsmanthusBeginner::init()
     });
     return true;
 }
-

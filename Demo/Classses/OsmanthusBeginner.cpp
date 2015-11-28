@@ -70,7 +70,7 @@ bool OsmanthusBeginner::init()
         }
     });
     
-    BeginnerContinueBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+    BeginnerContinueBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch (type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
                 break;
@@ -79,7 +79,8 @@ bool OsmanthusBeginner::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
-                
+                //Director::getInstance()->replaceScene(BeginnerScene);
+                removeChild(BeginnerScene);
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:

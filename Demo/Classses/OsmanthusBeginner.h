@@ -22,4 +22,3 @@ public:
 };
 
 #endif // __HELLOWORLD_SCENE_H__
-

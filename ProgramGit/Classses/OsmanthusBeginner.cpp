@@ -1,6 +1,10 @@
+//This is the game beginner,not the menu
 #include "OsmanthusBeginner.h"
-
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
 USING_NS_CC;
+
+using namespace cocostudio::timeline;
 
 Scene* OsmanthusBeginner::createScene()
 {
@@ -9,10 +13,10 @@ Scene* OsmanthusBeginner::createScene()
     
     // 'layer' is an autorelease object
     auto layer = OsmanthusBeginner::create();
-
+    
     // add layer as a child to scene
     scene->addChild(layer);
-
+    
     // return the scene
     return scene;
 }
@@ -27,60 +31,101 @@ bool OsmanthusBeginner::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(OsmanthusBeginner::menuCloseCallback, this));
+    //create a rootNode and add the rootNode as the first root
+    auto rootNode = CSLoader::createNode("OsmanthusBeginner.csb");
+    addChild(rootNode);
     
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
+    cocos2d::ui::Button* BeginnerStartBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerStartBtn");
+    cocos2d::ui::Button* BeginnerContinueBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerContinueBtn");
+    cocos2d::ui::Button* BeginnerMenuBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerMenuBtn");
+    cocos2d::ui::Button* BeginnerExitBtn = (cocos2d::ui::Button*)rootNode->getChildByName("BeginnerExitBtn");
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
+    BeginnerStartBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                CCLOG("BEGAN");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                CCLOG("MOVED");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                CCLOG("ENDED");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                CCLOG("CANCELED");
+                break;
+                
+            default:
+                break;
+        }
+    });
     
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    BeginnerContinueBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch (type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+        
+    });
     
+    BeginnerMenuBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                CCLOG("BEGAN");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                CCLOG("MOVED");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                CCLOG("ENDED");
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                CCLOG("CANCELED");
+                break;
+                
+            default:
+                break;
+        }
+    });
+
+    BeginnerExitBtn->addTouchEventListener([](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch (type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+            //just when you ended touch,the program br exited
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                exit(0);
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+        
+    });
     return true;
 }
 
-
-void OsmanthusBeginner::menuCloseCallback(Ref* pSender)
-{
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
-}

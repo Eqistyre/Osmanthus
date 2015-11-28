@@ -1,16 +1,13 @@
 //This is the game beginner,not the menu
-#ifndef _OSMANTHUS_BEGINNER_H_
-#define _OSMANTHUS_BEGINNER_H_
+
+#ifndef _OSMANTHUS_MENU_H_
+#define _OSMANTHUS_MENU_H_
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
-#include "cocostudio/CocoStudio.h"
 
-class OsmanthusBeginner : public cocos2d::Layer
+class OsmanthusMenu : public cocos2d::Layer
 {
 public:
-    void onClick(Ref*, cocos2d::ui::TouchEventType type);
-    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
     
@@ -18,8 +15,7 @@ public:
     virtual bool init();
     
     // implement the "static create()" method manually
-    CREATE_FUNC(OsmanthusBeginner);
+    CREATE_FUNC(OsmanthusMenu);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
-
+#endif

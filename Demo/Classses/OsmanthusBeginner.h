@@ -3,10 +3,14 @@
 #define _OSMANTHUS_BEGINNER_H_
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
+#include "cocostudio/CocoStudio.h"
 
 class OsmanthusBeginner : public cocos2d::Layer
 {
 public:
+    void onClick(Ref*, cocos2d::ui::TouchEventType type);
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
     

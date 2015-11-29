@@ -1,3 +1,11 @@
+//
+//  OsmanthusMenu.cpp
+//
+//
+//  Created by 张仲昊 on 15/11/26.
+//
+//
+
 #include "OsmanthusMenu.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"

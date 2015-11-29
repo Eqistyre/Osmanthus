@@ -1,3 +1,11 @@
+//
+//  SoundManager.h
+//
+//
+//  Created by 张仲昊 on 15/11/26.
+//
+//
+
 #ifndef _SOUND_MANAGER_H_
 #define _SOUND_MANAGER_H_
 

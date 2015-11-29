@@ -1,19 +1,17 @@
 //
-//  OsmanthusMenu.h
+//  GameRunning.h
+//  
 //
-//
-//  Created by 张仲昊 on 15/11/26.
+//  Created by 张仲昊 on 15/11/29.
 //
 //
 
-#ifndef _OSMANTHUS_MENU_H_
-#define _OSMANTHUS_MENU_H_
+#ifndef ____GameRunning__
+#define ____GameRunning__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
-#include "cocostudio/CocoStudio.h"
 
-class OsmanthusMenu : public cocos2d::Layer
+class GameRunning : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -23,7 +21,7 @@ public:
     virtual bool init();
     
     // implement the "static create()" method manually
-    CREATE_FUNC(OsmanthusMenu);
+    CREATE_FUNC(GameRunning);
 };
 
-#endif
+#endif /* defined(____GameRunning__) */

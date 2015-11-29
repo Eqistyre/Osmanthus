@@ -1,3 +1,11 @@
+//
+//  OsmanthusBeginner.h
+//
+//
+//  Created by 张仲昊 on 15/11/26.
+//
+//
+
 #ifndef _OSMANTHUS_BEGINNER_H_
 #define _OSMANTHUS_BEGINNER_H_
 
@@ -5,6 +13,7 @@
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
 #include "OsmanthusMenu.h"
+#include "GameRunning.h"
 
 class OsmanthusBeginner : public cocos2d::Layer
 {

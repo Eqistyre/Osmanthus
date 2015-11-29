@@ -1,3 +1,11 @@
+//
+//  Global.h
+//
+//
+//  Created by 张仲昊 on 15/11/26.
+//
+//
+
 #ifndef __GLOBAL_PARAM_H__
 #define __GLOBAL_PARAM_H__
 

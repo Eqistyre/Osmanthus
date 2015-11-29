@@ -1,7 +1,17 @@
+//
+//  OsmanthusBeginner.cpp
+//
+//
+//  Created by 张仲昊 on 15/11/26.
+//
+//
+
 #include "OsmanthusBeginner.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "OsmanthusMenu.h"
+#include "GameRunning.h"
+#include "SceneManager.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -65,6 +75,7 @@ bool OsmanthusBeginner::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
+                SceneManager::sharedSceneManager()->changeScene(SceneManager::en_GameRunning);
                 CCLOG("ENDED");
                 break;
                 

@@ -7,11 +7,11 @@
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
-    CCLog("begin");
+    log("begin");
 }
 
 AppDelegate::~AppDelegate() {
-    CCLog("exit");
+    log("exit");
 }
 
 //if you want a different context,just modify the value of glContextAttrs

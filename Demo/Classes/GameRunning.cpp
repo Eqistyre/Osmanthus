@@ -12,6 +12,7 @@
 #include "Global.h"
 #include "SoundManager.h"
 #include "OsmanthusMenu.h"
+#include "CharacterLayer.h"
 
 USING_NS_CC;
 
@@ -50,6 +51,13 @@ bool GameRunning::init()
     GameRunningLayer->addChild(GameRunningLayerNode);;
     GameRunningScene->addChild(GameRunningLayer);
     this->addChild(GameRunningScene);
+    
+//    CharacterLayer *CharacterLayer = CharacterLayer::create();
+//    this->addChild(CharacterLayer);
+    auto CharacterNode = cocos2d::CSLoader::createNode("CharacterLayer.csb");
+    auto CharacterLayer = Layer::create();
+    CharacterLayer->addChild(CharacterNode);
+    this->addChild(CharacterLayer);
     
     return true;
 }

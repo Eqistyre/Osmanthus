@@ -41,10 +41,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
     
+    //set the resoures' path
     FileUtils::getInstance()->addSearchPath("res");
     FileUtils::getInstance()->addSearchPath("Music");
-    FileUtils::getInstance()->addSearchPath("");
+    FileUtils::getInstance()->addSearchPath("config");
     ;
+    
     // create a scene. it's an autorelease object
     auto scene = OsmanthusBeginner::createScene();
     

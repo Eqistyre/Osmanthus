@@ -69,6 +69,8 @@ bool OsmanthusBeginner::init()
     cocos2d::ui::Button* BeginnerExitBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerExitBtn");
     cocos2d::ui::Button* MenuBgmBtn = (cocos2d::ui::Button*)MenuNode->getChildByName("MenuBgmBtn");
     cocos2d::ui::Button* MenuBackBtn = (cocos2d::ui::Button*)MenuNode->getChildByName("MenuBackBtn");
+    
+    
     BeginnerStartBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:

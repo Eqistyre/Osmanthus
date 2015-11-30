@@ -15,8 +15,7 @@
 using namespace std;
 USING_NS_CC;
 
-class CStoryLayer:
-public Layer
+class CStoryLayer : public Layer
 {
 public:
     CStoryLayer();

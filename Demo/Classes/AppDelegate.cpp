@@ -43,7 +43,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     FileUtils::getInstance()->addSearchPath("res");
     FileUtils::getInstance()->addSearchPath("Music");
-    
+    FileUtils::getInstance()->addSearchPath("");
+    ;
     // create a scene. it's an autorelease object
     auto scene = OsmanthusBeginner::createScene();
     

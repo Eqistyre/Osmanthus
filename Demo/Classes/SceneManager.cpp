@@ -39,7 +39,7 @@ void SceneManager::changeScene( EnumSceneType enScenType, bool isTrans, float ti
     {
         return;
     }
-    TextureCache::sharedTextureCache()->removeUnusedTextures();
+    //TextureCache::sharedTextureCache()->removeUnusedTextures();
     Director* pDirector = Director::getInstance();
     Scene* curScene = pDirector->getRunningScene();
     if(curScene == NULL)

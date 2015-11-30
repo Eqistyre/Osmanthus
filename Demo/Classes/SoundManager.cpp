@@ -10,10 +10,10 @@
 //#include "DataPool.h"
 
 SoundManager* SoundManager::m_pSoundManager = NULL;
-SoundManager::SoundManager()
-: m_bBgMusicStop(false)
-, m_bEffectStop(false)
-, m_bInited(false)
+SoundManager::SoundManager():
+m_bBgMusicStop(false),
+m_bEffectStop(false),
+m_bInited(false)
 {
 }
 

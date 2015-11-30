@@ -17,7 +17,7 @@ class OsmanthusBeginner : public cocos2d::Layer
 {
 public:
     void onClick(Ref*, cocos2d::ui::TouchEventType type);
-    
+    bool playMusic();
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
     

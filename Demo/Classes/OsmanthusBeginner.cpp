@@ -59,6 +59,10 @@ bool OsmanthusBeginner::init()
     this->addChild(MenuLayer);
     MenuLayer->setVisible(false);
     
+    //play BGM
+    SoundManager::shareSoundManager()->playBackgroundMusic("BeginnerMusic.mp3");
+    
+    
     cocos2d::ui::Button* BeginnerStartBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerStartBtn");
     cocos2d::ui::Button* BeginnerContinueBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerContinueBtn");
     cocos2d::ui::Button* BeginnerMenuBtn = (cocos2d::ui::Button*)BeginnerNode->getChildByName("BeginnerMenuBtn");
@@ -75,7 +79,11 @@ bool OsmanthusBeginner::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
+                
+                //changeScene in the future I think I should give some transitions
                 SceneManager::sharedSceneManager()->changeScene(SceneManager::en_GameRunning);
+                //changeScene in the future I think I should give some transitions
+                SoundManager::shareSoundManager()->stopBackgroundMusic();
                 CCLOG("ENDED");
                 break;
                 
@@ -154,7 +162,6 @@ bool OsmanthusBeginner::init()
         switch (type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
                 CCLOG("clickBgm");
-               SoundManager::shareSoundManager()->playBackgroundMusic("BeginnerMusic.mp3");
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::MOVED:

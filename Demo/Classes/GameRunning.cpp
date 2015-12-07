@@ -22,7 +22,6 @@ Scene* GameRunning::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-    
     // 'layer' is an autorelease object
     auto layer = GameRunning::create();
     
@@ -52,12 +51,86 @@ bool GameRunning::init()
     GameRunningScene->addChild(GameRunningLayer);
     this->addChild(GameRunningScene);
     
+    auto BeginnerNode = CSLoader::createNode("BeginnerLayer.csb");
+    auto BeginnerLayer = Layer::create();
+    BeginnerLayer->addChild(BeginnerNode);
 //    CharacterLayer *CharacterLayer = CharacterLayer::create();
 //    this->addChild(CharacterLayer);
-    auto CharacterNode = cocos2d::CSLoader::createNode("CharacterLayer.csb");
-    auto CharacterLayer = Layer::create();
-    CharacterLayer->addChild(CharacterNode);
-    this->addChild(CharacterLayer);
+//    auto CharacterNode = cocos2d::CSLoader::createNode("CharacterLayer.csb");
+//    auto CharacterLayer = Layer::create();
+//    CharacterLayer->addChild(CharacterNode);
+//    this->addChild(CharacterLayer);
+    
+    auto MenuClickLayerNode = CSLoader::createNode("MenuClickLayer.csb");
+    auto MenuClickLayer = Layer::create();
+    MenuClickLayer->addChild(MenuClickLayerNode);
+    this->addChild(MenuClickLayer);
+    MenuClickLayer->setVisible(false);
+    
+    //Addd menuClick backevent
+    cocos2d::ui::Button* SettingBtn  = (cocos2d::ui::Button*)GameRunningLayerNode->getChildByName("SettingBtn");
+    SettingBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                MenuClickLayer->setVisible(true);
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+    });
+    
+    cocos2d::ui::Button* ContinueBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("ContinueBtn2");
+    ContinueBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                MenuClickLayer->setVisible(false);
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+    });
+
+    cocos2d::ui::Button* ExitBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("ExitBtn2");
+    ExitBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                exit(0);
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+    });
+
     
     return true;
 }

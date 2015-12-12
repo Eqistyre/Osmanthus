@@ -90,6 +90,30 @@ bool GameRunning::init()
         }
     });
     
+    cocos2d::ui::Button* dialogueBtn  = (cocos2d::ui::Button*)GameRunningLayerNode->getChildByName("dialogueBtn");
+    dialogueBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                //changeScene in the future I think I should give some transitions
+                SceneManager::sharedSceneManager()->changeScene(SceneManager::en_Choose);
+                //changeScene in the future I think I should give some transitions
+                SoundManager::shareSoundManager()->stopBackgroundMusic();
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+    });
+    
     cocos2d::ui::Button* ContinueBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("ContinueBtn2");
     ContinueBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {

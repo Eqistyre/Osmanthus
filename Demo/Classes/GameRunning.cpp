@@ -13,6 +13,7 @@
 #include "SoundManager.h"
 #include "OsmanthusMenu.h"
 #include "CharacterLayer.h"
+#include "SceneManager.h"
 
 USING_NS_CC;
 
@@ -110,6 +111,30 @@ bool GameRunning::init()
         }
     });
 
+    cocos2d::ui::Button* BackBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("BackBtn2");
+    BackBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                //changeScene in the future I think I should give some transitions
+                SceneManager::sharedSceneManager()->changeScene(SceneManager::en_OsmanthusBeginner);
+                //changeScene in the future I think I should give some transitions
+                SoundManager::shareSoundManager()->stopBackgroundMusic();
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+    });
+    
     cocos2d::ui::Button* ExitBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("ExitBtn2");
     ExitBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
@@ -130,7 +155,6 @@ bool GameRunning::init()
                 break;
         }
     });
-
     
     return true;
 }

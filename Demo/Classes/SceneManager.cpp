@@ -9,6 +9,8 @@
 #include "SceneManager.h"
 #include "GameRunning.h"
 #include "OsmanthusBeginner.h"
+#include "ChooseScene.h"
+#include "ResultScene.h"
 
 SceneManager* SceneManager::mSceneManager = NULL;
 
@@ -86,6 +88,12 @@ Scene* SceneManager::getSceneByType( EnumSceneType enSceneType )
             break;
         case en_GameRunning:
             pLayer = GameRunning::create();
+            break;
+        case en_Choose:
+            pLayer = ChooseScene::create();
+            break;
+        case en_Result:
+            pLayer = ResultScene::create();
             break;
         default:
             break;

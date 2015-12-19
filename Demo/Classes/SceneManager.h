@@ -20,6 +20,8 @@ public:
     {
         en_OsmanthusBeginner,
         en_GameRunning,
+        en_Choose,
+        en_Result,
     };
     
     static SceneManager* sharedSceneManager();;

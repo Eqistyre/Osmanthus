@@ -1,12 +1,12 @@
 //
-//  GameRunning.cpp
-//  
+//  ChooseScene.cpp
+//  Demo
 //
-//  Created by 张仲昊 on 15/11/29.
+//  Created by 张仲昊 on 15/12/12.
 //
 //
 
-#include "GameRunning.h"
+#include "ChooseScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "Global.h"
@@ -19,12 +19,12 @@ USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
-Scene* GameRunning::createScene()
+Scene* ChooseScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     // 'layer' is an autorelease object
-    auto layer = GameRunning::create();
+    auto layer = ChooseScene::create();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -33,7 +33,7 @@ Scene* GameRunning::createScene()
     return scene;
 }
 
-bool GameRunning::init()
+bool ChooseScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -42,35 +42,15 @@ bool GameRunning::init()
         return false;
     }
     
-    auto RootNode = CSLoader::createNode("GameRunning.csb");
-    auto GameRunningScene = Scene::create();
-    GameRunningScene->addChild(RootNode);
-    
-    auto GameRunningLayerNode = CSLoader::createNode("GameRunningLayer.csb");
-    auto GameRunningLayer = Layer::create();
-    GameRunningLayer->addChild(GameRunningLayerNode);;
-    GameRunningScene->addChild(GameRunningLayer);
-    this->addChild(GameRunningScene);
-    
-    auto BeginnerNode = CSLoader::createNode("BeginnerLayer.csb");
-    auto BeginnerLayer = Layer::create();
-    BeginnerLayer->addChild(BeginnerNode);
-//    CharacterLayer *CharacterLayer = CharacterLayer::create();
-//    this->addChild(CharacterLayer);
-//    auto CharacterNode = cocos2d::CSLoader::createNode("CharacterLayer.csb");
-//    auto CharacterLayer = Layer::create();
-//    CharacterLayer->addChild(CharacterNode);
-//    this->addChild(CharacterLayer);
-    
+    //in order to change it in the future.
+    auto ChooseSceneNode = CSLoader::createNode("ChooseScene.csb");
+    addChild(ChooseSceneNode);
     auto MenuClickLayerNode = CSLoader::createNode("MenuClickLayer.csb");
-    auto MenuClickLayer = Layer::create();
-    MenuClickLayer->addChild(MenuClickLayerNode);
-    this->addChild(MenuClickLayer);
-    MenuClickLayer->setVisible(false);
+    addChild(MenuClickLayerNode);
+    MenuClickLayerNode->setVisible(false);
     
-    //Addd menuClick backevent
-    cocos2d::ui::Button* SettingBtn  = (cocos2d::ui::Button*)GameRunningLayerNode->getChildByName("SettingBtn");
-    SettingBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+    cocos2d::ui::Button* ChooseSettingBtn  = (cocos2d::ui::Button*)ChooseSceneNode->getChildByName("ChooseSettingBtn");
+    ChooseSettingBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
             case cocos2d::ui::Widget::TouchEventType::BEGAN:
                 break;
@@ -79,7 +59,7 @@ bool GameRunning::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
-                MenuClickLayer->setVisible(true);
+                MenuClickLayerNode->setVisible(true);
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:
@@ -89,31 +69,8 @@ bool GameRunning::init()
                 break;
         }
     });
-    
-    cocos2d::ui::Button* dialogueBtn  = (cocos2d::ui::Button*)GameRunningLayerNode->getChildByName("dialogueBtn");
-    dialogueBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
-        switch(type) {
-            case cocos2d::ui::Widget::TouchEventType::BEGAN:
-                break;
-                
-            case cocos2d::ui::Widget::TouchEventType::MOVED:
-                break;
-                
-            case cocos2d::ui::Widget::TouchEventType::ENDED:
-                //changeScene in the future I think I should give some transitions
-                SceneManager::sharedSceneManager()->changeScene(SceneManager::en_Choose);
-                //changeScene in the future I think I should give some transitions
-                SoundManager::shareSoundManager()->stopBackgroundMusic();
-                break;
-                
-            case cocos2d::ui::Widget::TouchEventType::CANCELED:
-                break;
-                
-            default:
-                break;
-        }
-    });
-    
+
+    //Code reuse from GameRunning.cpp
     cocos2d::ui::Button* ContinueBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("ContinueBtn2");
     ContinueBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
@@ -124,7 +81,7 @@ bool GameRunning::init()
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::ENDED:
-                MenuClickLayer->setVisible(false);
+                MenuClickLayerNode->setVisible(false);
                 break;
                 
             case cocos2d::ui::Widget::TouchEventType::CANCELED:
@@ -134,7 +91,8 @@ bool GameRunning::init()
                 break;
         }
     });
-
+    
+    //Code reuse from GameRunning.cpp
     cocos2d::ui::Button* BackBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("BackBtn2");
     BackBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
@@ -159,6 +117,7 @@ bool GameRunning::init()
         }
     });
     
+    //Code reuse from GameRunning.cpp
     cocos2d::ui::Button* ExitBtn2  = (cocos2d::ui::Button*)MenuClickLayerNode->getChildByName("ExitBtn2");
     ExitBtn2->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
         switch(type) {
@@ -180,5 +139,28 @@ bool GameRunning::init()
         }
     });
     
+    cocos2d::ui::Button* GuoyeBtn = (cocos2d::ui::Button*)ChooseSceneNode->getChildByName("GuoyeBtn");
+    GuoyeBtn->addTouchEventListener([=](Ref* pSender,cocos2d::ui::Widget::TouchEventType type) {
+        switch(type) {
+            case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::MOVED:
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::ENDED:
+                //changeScene in the future I think I should give some transitions
+                SceneManager::sharedSceneManager()->changeScene(SceneManager::en_Result);
+                //changeScene in the future I think I should give some transitions
+                SoundManager::shareSoundManager()->stopBackgroundMusic();
+                break;
+                
+            case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                break;
+                
+            default:
+                break;
+        }
+    });
     return true;
 }

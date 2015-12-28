@@ -36,3 +36,6 @@ Global  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ###### 好感度（Impression_Name）：好感度我们暂定使用5分制，5分进入个人线哈。
 ###### 节操值（Moral_Value）：游戏中会有各种掉节操与增加节操的选项，节操以0为基准。一旦节操过低的时候就会被警察叔叔抓走哦
 ###### 能力值（Ability_Value）：学霸即使谈不了恋爱也还是可以有自己的GoodEnd！
+### <五>demo 效果
+<img src="https://github.com/AirOil/Test_X/blob/master/imgs/Osmanthus_1.png?raw=true" width = "600" height = "300" alt="Start" align=center />
+<img src="https://github.com/AirOil/Test_X/blob/master/imgs/Osmanthus_2.png?raw=true" width = "600" height = "300" alt="Running" align=center />

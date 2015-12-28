@@ -15,7 +15,6 @@
 2015.11.27&nbsp;&nbsp;  Demo制作中</br>
 2015.11.27&nbsp;&nbsp;  Demo成为了一个拥有着播放音乐循环等奇怪特效的东西哈哈哈</br>
 2015.12.2 &nbsp;&nbsp;&nbsp;  一个拥有着许许多多奇怪bug的DEMO出来了哈哈，准备重构代码</br>
-2015.12.13&nbsp;&nbsp;  Demo完结!撒花</br>
 ### <四>项目思路
 
 DataPool  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据池，单例模式，所有的配置和用户数据</br>
